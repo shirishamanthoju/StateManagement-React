@@ -1,0 +1,85 @@
+{
+  "Data": [
+    {
+      "id": 1,
+      "name": "Bitcoin",
+      "price": "$3.285.55.73",
+      "change": "+1.06%",
+      "marketCap": "$60.1T",
+      "type": "BTC",
+      "status": false
+    },
+    {
+      "id": 2,
+      "name": "Ethereum",
+      "price": "$216,678.10",
+      "change": "-5.49%",
+      "marketCap": "$25.4T",
+      "type": "ETH",
+      "status": false
+    },
+    {
+      "id": 3,
+      "name": "Ethereum2",
+      "price": "$216,678.10",
+      "change": "-5.49%",
+      "marketCap": "$25.4T",
+      "type": "ETH2",
+      "status": false
+    },
+    {
+      "id": 4,
+      "name": "Tether",
+      "price": "$74.31",
+      "change": "+0.11%",
+      "marketCap": "$4.6T",
+      "type": "USDT",
+      "status": false
+    },
+    {
+      "id": 5,
+      "name": "Bitcoin Coin",
+      "price": "$24,942.54",
+      "change": "-3.69%",
+      "marketCap": "$4.2T",
+      "type": "BNB",
+      "status": false
+    },
+    {
+      "id": 6,
+      "name": "Cardona",
+      "price": "$104.52",
+      "change": "-1.82%",
+      "marketCap": "$3.4T",
+      "type": "ADA",
+      "status": false
+    },
+    {
+      "id": 7,
+      "name": "XRP",
+      "price": "$57.21",
+      "change": "+1.11%",
+      "marketCap": "$2.7T",
+      "type": "XRP",
+      "status": false
+    },
+    {
+      "id": 8,
+      "name": "Dodge Coin",
+      "price": "$17.64",
+      "change": "-6.96%",
+      "marketCap": "$2.3T",
+      "type": "XRP",
+      "status": false
+    },
+    {
+      "id": 9,
+      "name": "USD Coin",
+      "price": "$74.26",
+      "change": "+1.01%",
+      "marketCap": "$2.1T",
+      "type": "XRP",
+      "status": false
+    }
+  ]
+}
