@@ -1,12 +1,9 @@
 import React from "react";
 import "./App.css";
+import MyDataTable from "./components/organisms/DataTable";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">Hello</header>
-    </div>
-  );
+  return <MyDataTable />;
 }
 
 export default App;
