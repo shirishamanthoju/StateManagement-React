@@ -3,43 +3,49 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import TabPanel from "@mui/lab/TabPanel";
 import { TabContext, TabList } from "@mui/lab";
+import IconTypo from "../../molecules/IconTypo";
 
 interface MyDataTableProps {}
 
 const columns: GridColDef[] = [
-  //   { field: "id", headerName: "ID", width: 90 },
   {
     field: "name",
     headerName: "Name",
-    width: 150,
-    editable: true,
+    width: 300,
+    renderCell: (params) => {
+      return (
+        <IconTypo
+          name={params.value}
+          image={params.row.image}
+          type={params.row.type}
+        />
+      );
+    },
   },
   {
     field: "price",
     headerName: "Price",
-    width: 150,
-    // editable: true,
+    width: 200,
   },
   {
     field: "change",
     headerName: "Change",
-    width: 110,
-    // editable: true,
+    width: 200,
   },
   {
     field: "marketCap",
     headerName: "Market Cap",
-    width: 150,
+    width: 200,
   },
   {
     field: "type",
     headerName: "Type",
-    width: 150,
+    width: 200,
   },
   {
     field: "status",
     headerName: "Status",
-    width: 150,
+    width: 200,
   },
 ];
 
@@ -49,63 +55,27 @@ interface DataProps {
   price: string;
   change: string;
   marketCap: string;
-  //   image: string;
+  image: string;
   type: string;
   status: boolean;
 }
 
-// const rows: DataProps[] = [
-//   {
-//     id: 1,
-//     name: "Bitcoin",
-//     price: "$3.285.55.73",
-//     change: "+1.06%",
-//     image: "",
-//     marketCap: "$60.1T",
-//     type: "BTC",
-//     status: false,
-//   },
-//   {
-//     id: 2,
-//     name: "Ethereum",
-//     price: "$216,678.10",
-//     change: "-5.49%",
-//     image: "",
-//     marketCap: "$25.4T",
-//     type: "ETH",
-//     status: false,
-//   },
-//   {
-//     id: 3,
-//     name: "Ethereum2",
-//     price: "$216,678.10",
-//     change: "-5.49%",
-//     image: "",
-//     marketCap: "$25.4T",
-//     type: "ETH2",
-//     status: false,
-//   },
-// ];
-
 const MyDataTable = (props: MyDataTableProps) => {
   const [value, setValue] = React.useState("1");
-  const [rowData, setRowData] = useState([]);
+  const [rowData, setRowData] = useState<DataProps[]>([]);
   const [searchInput, setSearchInput] = useState("");
-  const [filterData, setFilterData] = useState([]);
+  const [filterData, setFilterData] = useState<DataProps[]>([]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
-  const handleSearchInput = (searchValue: React.SetStateAction<string>) => {
+  const handleSearchInput = (searchValue: string) => {
     setSearchInput(searchValue);
-    if (searchInput !== "") {
-      const searchData = filterData.filter((item) => {
-        return Object.values(item)
-          .join(" ")
-          .toLowerCase()
-          .includes(searchInput.toLowerCase());
-      });
+    if (searchValue !== "") {
+      const searchData = rowData.filter((item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase())
+      );
       setFilterData(searchData);
     } else {
       setFilterData(rowData);
@@ -117,7 +87,10 @@ const MyDataTable = (props: MyDataTableProps) => {
   useEffect(() => {
     fetch("http://localhost:3000/Data")
       .then((data) => data.json())
-      .then((data) => setRowData(data));
+      .then((data) => {
+        setRowData(data);
+        setFilterData(data);
+      });
   }, []);
 
   return (
@@ -137,10 +110,10 @@ const MyDataTable = (props: MyDataTableProps) => {
         </TabList>
       </Box>
       <TabPanel value={"1"}>
-        <Stack sx={{ alignItems: "flex-end", display: "flex" }}>
+        <Stack sx={{ alignItems: "flex-start", display: "flex" }}>
           <OutlinedInput
             value={searchInput}
-            placeholder="Search Here"
+            placeholder="Search By Name Here"
             sx={{
               width: "12.5rem",
               height: "2rem",
@@ -149,7 +122,13 @@ const MyDataTable = (props: MyDataTableProps) => {
           />
         </Stack>
         <Box sx={{ marginTop: "30px" }}>
-          <DataGrid columns={columns} rows={rowData} />
+          <DataGrid
+            columns={columns}
+            rows={filterData}
+            rowHeight={60}
+            columnHeaderHeight={50}
+            hideFooter={true}
+          />
         </Box>
       </TabPanel>
     </TabContext>

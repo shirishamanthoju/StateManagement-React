@@ -2,30 +2,21 @@ import { Stack } from "@mui/material";
 import React from "react";
 import MuiTypography from "../../atoms/Typography";
 
-interface DataProps {
-  id: number;
+interface dataprops {
   name: string;
-  price: string;
-  change: string;
-  marketCap: string;
   image: string;
   type: string;
-  status: boolean;
 }
 
-type Data = {
-  item: DataProps;
-};
-
-const IconTypo = (props: Data) => {
-  const { item } = props;
+const IconTypo = (props: dataprops) => {
+  const item = props;
 
   return (
     <Stack direction="row" alignItems="center">
       <img src={item.image} alt="Icon Not Found" />
       <Stack direction="column" paddingLeft="12px">
-        <MuiTypography fontSize="22px" children={item.name} />
-        <MuiTypography fontSize="15px" children={item.type} />
+        <MuiTypography variant="body1" children={item.name} />
+        <MuiTypography variant="caption" children={item.type} />
       </Stack>
     </Stack>
   );
