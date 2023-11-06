@@ -3,9 +3,9 @@ import React from "react";
 import MuiTypography from "../../atoms/Typography";
 
 interface dataprops {
-  name: string;
-  image: string;
-  type: string;
+  name: string | undefined;
+  image: string | undefined;
+  type: string | undefined;
 }
 
 const IconTypo = (props: dataprops) => {

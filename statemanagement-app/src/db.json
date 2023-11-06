@@ -18,7 +18,7 @@
       "change": "-5.49%",
       "marketCap": "$25.4T",
       "type": "ETH",
-      "status": true
+      "status": false
     },
     {
       "id": 3,
@@ -38,7 +38,7 @@
       "change": "+0.11%",
       "marketCap": "$4.6T",
       "type": "USDT",
-      "status": false
+      "status": true
     },
     {
       "id": 5,
@@ -58,7 +58,7 @@
       "change": "-1.82%",
       "marketCap": "$3.4T",
       "type": "ADA",
-      "status": false
+      "status": true
     },
     {
       "id": 7,

@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
-import MyDataTable from "./components/organisms/DataTable";
+import DiscoverAssets from "./components/organisms/DiscoverAssets";
+
 
 function App() {
   return (
     <>
-      <MyDataTable />
+      {/* <MyDataTable /> */}
+      <DiscoverAssets />
     </>
   );
 }
